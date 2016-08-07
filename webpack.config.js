@@ -26,7 +26,7 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				loader: "style-loader!css-loader!autoprefixer-loader!sass",
+				loader: "style-loader!sass-loader!autoprefixer-loader!sass",
 				exclude: [/node_modules/, /public/]
 			},
 			{
