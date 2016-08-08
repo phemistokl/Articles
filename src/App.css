@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.app {
+  background-color: #eaeaea;
+  width: 100vw;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+.menu-bar {
+  display: flex;
+  background-color: #00bcd4;
+  height: 50px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  box-sizing: border-box;
+}
+.menu-item {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  height: 100%;
+}

@@ -20,5 +20,3 @@ const AboutPage = React.createClass({
 });
 
 export default AboutPage;
-
-export default AboutPage;

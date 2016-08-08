@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import './App.scss'
+import './App.css';
 
 const App = React.createClass({
       render: function() {

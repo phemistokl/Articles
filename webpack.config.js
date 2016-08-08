@@ -25,8 +25,8 @@ module.exports = {
 				exclude: [/node_modules/, /public/]
 			},
 			{
-				test: /\.scss$/,
-				loader: "style-loader!sass-loader!autoprefixer-loader!sass",
+				test: /\.less-loader$/,
+				loader: "style-loader!css-loader!autoprefixer-loader!less",
 				exclude: [/node_modules/, /public/]
 			},
 			{
