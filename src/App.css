@@ -19,7 +19,22 @@ body {
 .menu-item {
   padding-left: 16px;
   padding-right: 16px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  height: 100%;
+}
+.menu-item-link {
+  color: rgba(0,0,0,0.67);
+  font-size: 17px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.content {
+  padding: 16px;
+  box-sizing: border-box;
+}
+.AboutPage {
+  color: rgba(0,0,0,0.87);
+  padding: 16px;
+  box-sizing: border-box;
+}
+.text {
+  color: #ff4081;
 }

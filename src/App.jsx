@@ -9,11 +9,11 @@ const App = React.createClass({
           <div className="app">
             <div className="menu-bar">
               <div className="menu-item">
-                <Link to='/about'>About</Link>
+                <Link className="menu-item-link" to='/about'>About</Link>
               </div>
 
               <div className="menu-item">
-                <Link to='/inbox'>Inbox</Link>
+                <Link className="menu-item-link" to='/inbox'>Inbox</Link>
               </div>
             </div>
             <div className="content">

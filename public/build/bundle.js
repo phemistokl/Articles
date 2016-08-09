@@ -62,11 +62,11 @@
 
 	var _AppJsx2 = _interopRequireDefault(_AppJsx);
 
-	var _componentsAboutPageJsx = __webpack_require__(224);
+	var _componentsAboutPageJsx = __webpack_require__(227);
 
 	var _componentsAboutPageJsx2 = _interopRequireDefault(_componentsAboutPageJsx);
 
-	var _componentsInboxPageJsx = __webpack_require__(225);
+	var _componentsInboxPageJsx = __webpack_require__(228);
 
 	var _componentsInboxPageJsx2 = _interopRequireDefault(_componentsInboxPageJsx);
 
@@ -25363,7 +25363,7 @@
 
 	var _reactRouter = __webpack_require__(159);
 
-	__webpack_require__(227);
+	__webpack_require__(223);
 
 	var App = _react2['default'].createClass({
 	  displayName: 'App',
@@ -25380,7 +25380,7 @@
 	          { className: 'menu-item' },
 	          _react2['default'].createElement(
 	            _reactRouter.Link,
-	            { to: '/about' },
+	            { className: 'menu-item-link', to: '/about' },
 	            'About'
 	          )
 	        ),
@@ -25389,7 +25389,7 @@
 	          { className: 'menu-item' },
 	          _react2['default'].createElement(
 	            _reactRouter.Link,
-	            { to: '/inbox' },
+	            { className: 'menu-item-link', to: '/inbox' },
 	            'Inbox'
 	          )
 	        )
@@ -25407,169 +25407,16 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 223 */,
-/* 224 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _react = __webpack_require__(147);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var AboutPage = _react2['default'].createClass({
-	  displayName: 'AboutPage',
-
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'AboutPage' },
-	      _react2['default'].createElement(
-	        'h2',
-	        { className: 'title' },
-	        'This is messages application'
-	      ),
-	      _react2['default'].createElement(
-	        'div',
-	        { className: 'text' },
-	        _react2['default'].createElement(
-	          'p',
-	          null,
-	          'It is a established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-	        ),
-	        _react2['default'].createElement(
-	          'p',
-	          null,
-	          'It is a established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-	        ),
-	        _react2['default'].createElement(
-	          'p',
-	          null,
-	          'It is a established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-	        ),
-	        _react2['default'].createElement(
-	          'p',
-	          null,
-	          'It is a established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-	        )
-	      )
-	    );
-	  }
-	});
-
-	exports['default'] = AboutPage;
-	module.exports = exports['default'];
-
-/***/ },
-/* 225 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _react = __webpack_require__(147);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _messagesJson = __webpack_require__(226);
-
-	var _messagesJson2 = _interopRequireDefault(_messagesJson);
-
-	var InboxPage = _react2['default'].createClass({
-	  displayName: 'InboxPage',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      messages: _messagesJson2['default']
-	    };
-	  },
-
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      { className: 'InboxPage' },
-	      _react2['default'].createElement(
-	        'div',
-	        { className: 'messages' },
-	        _messagesJson2['default'].map(function (message) {
-	          return _react2['default'].createElement(
-	            'div',
-	            { key: message.id },
-	            message.subject
-	          );
-	        })
-	      )
-	    );
-	  }
-	});
-
-	exports['default'] = InboxPage;
-	module.exports = exports['default'];
-
-/***/ },
-/* 226 */
-/***/ function(module, exports) {
-
-	module.exports = [
-		{
-			"id": "12122323",
-			"subject": "Hi there! How are you?",
-			"senderName": "Mark",
-			"senderEmail": "sender@domain.com",
-			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-		},
-		{
-			"id": "57687976756",
-			"subject": "Hi there! How are you?",
-			"senderName": "Dark",
-			"senderEmail": "sender@domain.com",
-			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-		},
-		{
-			"id": "2335577686",
-			"subject": "Hi there! How are you?",
-			"senderName": "Fark",
-			"senderEmail": "sender@domain.com",
-			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-		},
-		{
-			"id": "8865645342",
-			"subject": "Hi there! How are you?",
-			"senderName": "Tspark",
-			"senderEmail": "sender@domain.com",
-			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-		},
-		{
-			"id": "34567676",
-			"subject": "Hi there! How are you?",
-			"senderName": "Zark",
-			"senderEmail": "sender@domain.com",
-			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-		}
-	];
-
-/***/ },
-/* 227 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(228);
+	var content = __webpack_require__(224);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(230)(content, {});
+	var update = __webpack_require__(226)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -25586,21 +25433,21 @@
 	}
 
 /***/ },
-/* 228 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(229)();
+	exports = module.exports = __webpack_require__(225)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "body {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n.app {\r\n  background-color: #eaeaea;\r\n  width: 100vw;\r\n  min-height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n.menu-bar {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  background-color: #00bcd4;\r\n  height: 50px;\r\n  padding-top: 12px;\r\n  padding-bottom: 12px;\r\n  box-sizing: border-box;\r\n}\r\n.menu-item {\r\n  padding-left: 16px;\r\n  padding-right: 16px;\r\n  padding-top: 16px;\r\n  padding-bottom: 16px;\r\n  height: 100%;\r\n}\r\n", ""]);
+	exports.push([module.id, "body {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n.app {\r\n  background-color: #eaeaea;\r\n  width: 100vw;\r\n  min-height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n.menu-bar {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  background-color: #00bcd4;\r\n  height: 50px;\r\n  padding-top: 12px;\r\n  padding-bottom: 12px;\r\n  box-sizing: border-box;\r\n}\r\n.menu-item {\r\n  padding-left: 16px;\r\n  padding-right: 16px;\r\n}\r\n.menu-item-link {\r\n  color: rgba(0,0,0,0.67);\r\n  font-size: 17px;\r\n  text-transform: uppercase;\r\n  text-decoration: none;\r\n}\r\n.content {\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.AboutPage {\r\n  color: rgba(0,0,0,0.87);\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.text {\r\n  color: #ff4081;\r\n}\r\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 229 */
+/* 225 */
 /***/ function(module, exports) {
 
 	/*
@@ -25656,7 +25503,7 @@
 
 
 /***/ },
-/* 230 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -25906,6 +25753,158 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(147);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var AboutPage = _react2['default'].createClass({
+	  displayName: 'AboutPage',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'AboutPage' },
+	      _react2['default'].createElement(
+	        'h2',
+	        { className: 'title' },
+	        'This is messages application'
+	      ),
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'text' },
+	        _react2['default'].createElement(
+	          'p',
+	          null,
+	          'It is a established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
+	        ),
+	        _react2['default'].createElement(
+	          'p',
+	          null,
+	          'It is a established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
+	        ),
+	        _react2['default'].createElement(
+	          'p',
+	          null,
+	          'It is a established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
+	        ),
+	        _react2['default'].createElement(
+	          'p',
+	          null,
+	          'It is a established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports['default'] = AboutPage;
+	module.exports = exports['default'];
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(147);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _messagesJson = __webpack_require__(229);
+
+	var _messagesJson2 = _interopRequireDefault(_messagesJson);
+
+	var InboxPage = _react2['default'].createClass({
+	  displayName: 'InboxPage',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      messages: _messagesJson2['default']
+	    };
+	  },
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'InboxPage' },
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'messages' },
+	        _messagesJson2['default'].map(function (message) {
+	          return _react2['default'].createElement(
+	            'div',
+	            { key: message.id },
+	            message.subject
+	          );
+	        })
+	      )
+	    );
+	  }
+	});
+
+	exports['default'] = InboxPage;
+	module.exports = exports['default'];
+
+/***/ },
+/* 229 */
+/***/ function(module, exports) {
+
+	module.exports = [
+		{
+			"id": "12122323",
+			"subject": "Hi there! How are you?",
+			"senderName": "Mark",
+			"senderEmail": "sender@domain.com",
+			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+		},
+		{
+			"id": "57687976756",
+			"subject": "Hi there! How are you?",
+			"senderName": "Dark",
+			"senderEmail": "sender@domain.com",
+			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+		},
+		{
+			"id": "2335577686",
+			"subject": "Hi there! How are you?",
+			"senderName": "Fark",
+			"senderEmail": "sender@domain.com",
+			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+		},
+		{
+			"id": "8865645342",
+			"subject": "Hi there! How are you?",
+			"senderName": "Tspark",
+			"senderEmail": "sender@domain.com",
+			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+		},
+		{
+			"id": "34567676",
+			"subject": "Hi there! How are you?",
+			"senderName": "Zark",
+			"senderEmail": "sender@domain.com",
+			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+		}
+	];
 
 /***/ }
 /******/ ]);
