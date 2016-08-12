@@ -5,6 +5,10 @@ import MessagePreview from './MessagePreview.jsx';
 import messages from '../messages.json';
 
 const InboxPage = React.createClass({
+    contextTypes: {
+      router: React.PropTypes.object.isRequired
+    },
+
     getInitialState() {
       return {
         messages
@@ -12,10 +16,14 @@ const InboxPage = React.createClass({
     },
 
     handlePreviewClick(messageId) {
-      alert(messageId);
+      this.context.router.push('/inbox/messages/${messageId}');
     },
 
     render() {
+      const { messages } = this.state;
+
+      const { messageId: selectedMessageId } = this.props.params;
+
       return (
         <div className="InboxPage">
           <div className="messages">
@@ -23,6 +31,7 @@ const InboxPage = React.createClass({
                 messages.map(message =>
                   <MessagePreview
                   key={message.id}
+                  selected={message.id === selectedMessageId}
                   onClick={this.handlePreviewClick.bind(null, message.id)}
                   title={message.subject}
                   senderName={message.senderName}

@@ -25449,7 +25449,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n.app {\r\n  background-color: #eaeaea;\r\n  width: 100vw;\r\n  min-height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n.menu-bar {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  background-color: #00bcd4;\r\n  height: 50px;\r\n  padding-top: 12px;\r\n  padding-bottom: 12px;\r\n  box-sizing: border-box;\r\n}\r\n.menu-item {\r\n  padding-left: 16px;\r\n  padding-right: 16px;\r\n}\r\n.menu-item-link {\r\n  color: #ffffff;\r\n  font-size: 17px;\r\n  text-transform: uppercase;\r\n  text-decoration: none;\r\n}\r\n.content {\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.AboutPage {\r\n  color: #ff4081;\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.text {\r\n  color: rgba(0,0,0,0.87);\r\n}\r\n.MessagePreview {\r\n  padding: 8px;\r\n  background-color: #ffffff;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  cursor: pointer;\r\n}\r\n.MessagePreview:hover {\r\n  background-color: lighten(#00bcd4, 55%);\r\n}\r\n.MessagePreview .title {\r\n  font-size: 16px;\r\n  color:  rgba(0,0,0,0.87);\r\n}\r\n.from {\r\n  font-size: 14px;\r\n  color: rgba(0,0,0,0.54);\r\n}\r\n", ""]);
+	exports.push([module.id, "body {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n.app {\r\n  background-color: #eaeaea;\r\n  width: 100vw;\r\n  min-height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n.menu-bar {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  background-color: #00bcd4;\r\n  height: 50px;\r\n  padding-top: 12px;\r\n  padding-bottom: 12px;\r\n  box-sizing: border-box;\r\n}\r\n.menu-item {\r\n  padding-left: 16px;\r\n  padding-right: 16px;\r\n}\r\n.menu-item-link {\r\n  color: #ffffff;\r\n  font-size: 17px;\r\n  text-transform: uppercase;\r\n  text-decoration: none;\r\n}\r\n.content {\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.AboutPage {\r\n  color: #ff4081;\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.text {\r\n  color: rgba(0,0,0,0.87);\r\n}\r\n.MessagePreview {\r\n  padding: 8px;\r\n  background-color: #ffffff;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  cursor: pointer;\r\n}\r\n.MessagePreview:hover {\r\n  background-color: lighten(#00bcd4, 55%);\r\n}\r\n.MessagePreview:selected {\r\n  border-right: none;\r\n}\r\n.MessagePreview .title {\r\n  font-size: 16px;\r\n  color:  rgba(0,0,0,0.87);\r\n}\r\n.from {\r\n  font-size: 14px;\r\n  color: rgba(0,0,0,0.54);\r\n}\r\n.InboxPage {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  height: 100%;\r\n}\r\n.messages {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  border-left: 1px solid rgba(0,0,0,0.12);\r\n}\r\n.message-container {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -25848,6 +25848,10 @@
 	var InboxPage = _react2['default'].createClass({
 	  displayName: 'InboxPage',
 
+	  contextTypes: {
+	    router: _react2['default'].PropTypes.object.isRequired
+	  },
+
 	  getInitialState: function getInitialState() {
 	    return {
 	      messages: _messagesJson2['default']
@@ -25855,11 +25859,14 @@
 	  },
 
 	  handlePreviewClick: function handlePreviewClick(messageId) {
-	    alert(messageId);
+	    this.context.router.push('/inbox/messages/${messageId}');
 	  },
 
 	  render: function render() {
 	    var _this = this;
+
+	    var messages = this.state.messages;
+	    var selectedMessageId = this.props.params.messageId;
 
 	    return _react2['default'].createElement(
 	      'div',
@@ -25867,9 +25874,10 @@
 	      _react2['default'].createElement(
 	        'div',
 	        { className: 'messages' },
-	        _messagesJson2['default'].map(function (message) {
+	        messages.map(function (message) {
 	          return _react2['default'].createElement(_MessagePreviewJsx2['default'], {
 	            key: message.id,
+	            selected: message.id === selectedMessageId,
 	            onClick: _this.handlePreviewClick.bind(null, message.id),
 	            title: message.subject,
 	            senderName: message.senderName
@@ -25904,6 +25912,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _classnames = __webpack_require__(232);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
 	var MessagePreview = _react2['default'].createClass({
 	  displayName: 'MessagePreview',
 
@@ -25913,9 +25925,11 @@
 	    var senderName = _props.senderName;
 	    var onClick = _props.onClick;
 
+	    var classes = (0, _classnames2['default'])('MessagePreview', { selected: selected });
+
 	    return _react2['default'].createElement(
 	      'div',
-	      { className: 'MessagePreview', onClick: onClick },
+	      { className: classes, onClick: onClick },
 	      _react2['default'].createElement(
 	        'div',
 	        { className: 'title' },
@@ -25991,20 +26005,127 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _messagesJson = __webpack_require__(230);
+
+	var _messagesJson2 = _interopRequireDefault(_messagesJson);
+
 	var Message = _react2['default'].createClass({
 	  displayName: 'Message',
 
+	  getInitialState: function getInitialState() {
+	    var messageId = this.props.params.messageId;
+
+	    return {
+	      message: _messagesJson2['default'].find(function (message) {
+	        return message.id === messageId;
+	      })
+	    };
+	  },
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    var prevId = this.props.params.messageId;
+	    var nextId = nextProps.params.messageId;
+
+	    if (prevId !== nextId) {
+	      this.setState({
+	        message: _messagesJson2['default'].find(function (message) {
+	          return message.id === nextId;
+	        })
+	      });
+	    }
+	  },
+
 	  render: function render() {
+	    var message = this.state.message;
+
 	    return _react2['default'].createElement(
 	      'div',
 	      { className: 'Message' },
-	      'This is message'
+	      _react2['default'].createElement(
+	        'p',
+	        null,
+	        'From: ',
+	        message.senderName,
+	        ' (',
+	        message.senderEmail,
+	        ')'
+	      ),
+	      _react2['default'].createElement(
+	        'p',
+	        null,
+	        'To: you'
+	      ),
+	      _react2['default'].createElement(
+	        'p',
+	        null,
+	        'Subject: ',
+	        message.subject
+	      ),
+	      _react2['default'].createElement('hr', null),
+	      _react2['default'].createElement(
+	        'p',
+	        null,
+	        message.body
+	      )
 	    );
 	  }
 	});
 
 	exports['default'] = Message;
 	module.exports = exports['default'];
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames () {
+			var classes = [];
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+
+			return classes.join(' ');
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
 
 /***/ }
 /******/ ]);
