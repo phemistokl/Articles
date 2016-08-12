@@ -70,6 +70,10 @@
 
 	var _componentsInboxPageJsx2 = _interopRequireDefault(_componentsInboxPageJsx);
 
+	var _componentsMessageJsx = __webpack_require__(231);
+
+	var _componentsMessageJsx2 = _interopRequireDefault(_componentsMessageJsx);
+
 	_reactDom2['default'].render(_react2['default'].createElement(
 	    _reactRouter.Router,
 	    { history: _reactRouter.hashHistory },
@@ -77,7 +81,11 @@
 	        _reactRouter.Route,
 	        { path: '/', component: _AppJsx2['default'] },
 	        _react2['default'].createElement(_reactRouter.Route, { path: '/about', component: _componentsAboutPageJsx2['default'] }),
-	        _react2['default'].createElement(_reactRouter.Route, { path: '/inbox', component: _componentsInboxPageJsx2['default'] })
+	        _react2['default'].createElement(
+	            _reactRouter.Route,
+	            { path: '/inbox', component: _componentsInboxPageJsx2['default'] },
+	            _react2['default'].createElement(_reactRouter.Route, { path: '/inbox/messages/:messageId', component: _componentsMessageJsx2['default'] })
+	        )
 	    )
 	), document.getElementById('mount-point'));
 
@@ -25441,7 +25449,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n.app {\r\n  background-color: #eaeaea;\r\n  width: 100vw;\r\n  min-height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n.menu-bar {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  background-color: #00bcd4;\r\n  height: 50px;\r\n  padding-top: 12px;\r\n  padding-bottom: 12px;\r\n  box-sizing: border-box;\r\n}\r\n.menu-item {\r\n  padding-left: 16px;\r\n  padding-right: 16px;\r\n}\r\n.menu-item-link {\r\n  color: rgba(0,0,0,0.67);\r\n  font-size: 17px;\r\n  text-transform: uppercase;\r\n  text-decoration: none;\r\n}\r\n.content {\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.AboutPage {\r\n  color: rgba(0,0,0,0.87);\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.text {\r\n  color: #ff4081;\r\n}\r\n", ""]);
+	exports.push([module.id, "body {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n.app {\r\n  background-color: #eaeaea;\r\n  width: 100vw;\r\n  min-height: 100vh;\r\n  box-sizing: border-box;\r\n}\r\n.menu-bar {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  background-color: #00bcd4;\r\n  height: 50px;\r\n  padding-top: 12px;\r\n  padding-bottom: 12px;\r\n  box-sizing: border-box;\r\n}\r\n.menu-item {\r\n  padding-left: 16px;\r\n  padding-right: 16px;\r\n}\r\n.menu-item-link {\r\n  color: #ffffff;\r\n  font-size: 17px;\r\n  text-transform: uppercase;\r\n  text-decoration: none;\r\n}\r\n.content {\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.AboutPage {\r\n  color: #ff4081;\r\n  padding: 16px;\r\n  box-sizing: border-box;\r\n}\r\n.text {\r\n  color: rgba(0,0,0,0.87);\r\n}\r\n.MessagePreview {\r\n  padding: 8px;\r\n  background-color: #ffffff;\r\n  border-bottom: 1px solid rgba(0,0,0,0.12);\r\n  cursor: pointer;\r\n}\r\n.MessagePreview:hover {\r\n  background-color: lighten(#00bcd4, 55%);\r\n}\r\n.MessagePreview .title {\r\n  font-size: 16px;\r\n  color:  rgba(0,0,0,0.87);\r\n}\r\n.from {\r\n  font-size: 14px;\r\n  color: rgba(0,0,0,0.54);\r\n}\r\n", ""]);
 
 	// exports
 
@@ -25829,7 +25837,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _messagesJson = __webpack_require__(229);
+	var _MessagePreviewJsx = __webpack_require__(229);
+
+	var _MessagePreviewJsx2 = _interopRequireDefault(_MessagePreviewJsx);
+
+	var _messagesJson = __webpack_require__(230);
 
 	var _messagesJson2 = _interopRequireDefault(_messagesJson);
 
@@ -25842,7 +25854,13 @@
 	    };
 	  },
 
+	  handlePreviewClick: function handlePreviewClick(messageId) {
+	    alert(messageId);
+	  },
+
 	  render: function render() {
+	    var _this = this;
+
 	    return _react2['default'].createElement(
 	      'div',
 	      { className: 'InboxPage' },
@@ -25850,12 +25868,18 @@
 	        'div',
 	        { className: 'messages' },
 	        _messagesJson2['default'].map(function (message) {
-	          return _react2['default'].createElement(
-	            'div',
-	            { key: message.id },
-	            message.subject
-	          );
+	          return _react2['default'].createElement(_MessagePreviewJsx2['default'], {
+	            key: message.id,
+	            onClick: _this.handlePreviewClick.bind(null, message.id),
+	            title: message.subject,
+	            senderName: message.senderName
+	          });
 	        })
+	      ),
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'message-container' },
+	        this.props.children
 	      )
 	    );
 	  }
@@ -25866,6 +25890,51 @@
 
 /***/ },
 /* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(147);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var MessagePreview = _react2['default'].createClass({
+	  displayName: 'MessagePreview',
+
+	  render: function render() {
+	    var _props = this.props;
+	    var title = _props.title;
+	    var senderName = _props.senderName;
+	    var onClick = _props.onClick;
+
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'MessagePreview', onClick: onClick },
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'title' },
+	        title
+	      ),
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'from' },
+	        'from ' + senderName
+	      )
+	    );
+	  }
+	});
+
+	exports['default'] = MessagePreview;
+	module.exports = exports['default'];
+
+/***/ },
+/* 230 */
 /***/ function(module, exports) {
 
 	module.exports = [
@@ -25905,6 +25974,37 @@
 			"body": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
 		}
 	];
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(147);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var Message = _react2['default'].createClass({
+	  displayName: 'Message',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'Message' },
+	      'This is message'
+	    );
+	  }
+	});
+
+	exports['default'] = Message;
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

@@ -21,7 +21,7 @@ body {
   padding-right: 16px;
 }
 .menu-item-link {
-  color: rgba(0,0,0,0.67);
+  color: #ffffff;
   font-size: 17px;
   text-transform: uppercase;
   text-decoration: none;
@@ -31,10 +31,27 @@ body {
   box-sizing: border-box;
 }
 .AboutPage {
-  color: rgba(0,0,0,0.87);
+  color: #ff4081;
   padding: 16px;
   box-sizing: border-box;
 }
 .text {
-  color: #ff4081;
+  color: rgba(0,0,0,0.87);
+}
+.MessagePreview {
+  padding: 8px;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  cursor: pointer;
+}
+.MessagePreview:hover {
+  background-color: lighten(#00bcd4, 55%);
+}
+.MessagePreview .title {
+  font-size: 16px;
+  color:  rgba(0,0,0,0.87);
+}
+.from {
+  font-size: 14px;
+  color: rgba(0,0,0,0.54);
 }
